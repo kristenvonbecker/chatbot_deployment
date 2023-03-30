@@ -145,7 +145,6 @@ responses:
   - text: Sorry, I don't understand. Could you please rephrase that?
 
 actions:
-- action_session_start
 - action_get_article_match_ids
 - action_get_exhibit_match_ids
 - action_give_explanation
