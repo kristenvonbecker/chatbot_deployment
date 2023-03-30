@@ -1,0 +1,4 @@
+/rasa/models/
+/rasa/node_modules/
+.*
+!.gitignore
