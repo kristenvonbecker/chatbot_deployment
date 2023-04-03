@@ -1,4 +1,3 @@
-#FROM khalosa/rasa-aarch64:3.3.1
 FROM rasa/rasa:3.3.1
 
 WORKDIR /app
@@ -9,7 +8,7 @@ USER root
 COPY ./data /app/data
 COPY ./models /app/models
 
-RUN rasa train
+RUN rasa train --out /app/models
 
 VOLUME /app
 VOLUME /app/data
