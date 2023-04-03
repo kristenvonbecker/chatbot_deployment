@@ -7,8 +7,8 @@ services:
       context: backend
     volumes:
       - ./backend:/app
-      - ./backend/data:/app/data
-      - ./backend/models:/app/models
+#      - ./backend/data:/app/data
+#      - ./backend/models:/app/models
     ports:
       - "5005:5005"
 
@@ -18,7 +18,7 @@ services:
       context: actions
     volumes:
       - ./actions:/app
-      - ./actions/knowledgebase:/app/knowledgebase
+#      - ./actions/knowledgebase:/app/knowledgebase
     ports:
       - "5055:5055"
     expose:
