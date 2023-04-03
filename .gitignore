@@ -1,7 +1,6 @@
-/rasa/backend/models/
-/rasa/models/
 /rasa/node_modules/
 __init__.py
 .*
 !.gitignore
 !.dockerignore
+!.gitattributes
