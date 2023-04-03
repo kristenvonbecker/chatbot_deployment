@@ -8,8 +8,6 @@ USER root
 COPY ./data /app/data
 COPY ./models /app/models
 
-RUN rasa train
-
 VOLUME /app
 VOLUME /app/data
 VOLUME /app/models
