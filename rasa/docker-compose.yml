@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  nlu_server:
+    container_name: "nlu_server"
+    build:
+      context: backend
+    volumes:
+      - ./backend:/app
+      - ./backend/data:/app/data
+      - ./backend/models:/app/models
+    ports:
+      - "5005:5005"
+
+  action_server:
+    container_name: "action_server"
+    build:
+      context: actions
+    platform: linux/arm64/v8
+    volumes:
+      - ./actions:/app
+      - ./actions/knowledgebase:/app/knowledgebase
+    ports:
+      - "5055:5055"
+    expose:
+      - 5055
+
+#  nginx:
+#    container_name: "nginx"
+#    image: nginx
+#    depends_on:
+#      - nlu_server
+#      - action_server
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    volumes:
+#      - ./nginx:/etc/nginx/conf.d
+#      - ./certs:/etc/letsencrypt/live/explorer-ai.chat

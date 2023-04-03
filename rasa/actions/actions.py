@@ -2,19 +2,13 @@ from rasa_sdk.events import SlotSet, SessionStarted, ActionExecuted, BotUttered
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
-from rasa_sdk.forms import ValidationAction
+
 from typing import Any, Text, Dict, List
-from actions import scripts
-from actions.knowledgebase import articles, exhibits
-from dotenv import load_dotenv
+import scripts
+from knowledgebase import articles, exhibits
 import logging
 import random
-from importlib import reload
-reload(scripts)
-reload(articles)
-reload(exhibits)
 
-load_dotenv()
 logger = logging.getLogger(__name__)
 
 

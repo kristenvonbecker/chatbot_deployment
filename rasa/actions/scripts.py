@@ -1,11 +1,6 @@
-from actions.knowledgebase import articles, exhibits
+from knowledgebase import articles, exhibits
 import random
 from fuzzywuzzy import fuzz, process
-
-from importlib import reload
-
-reload(articles)
-reload(exhibits)
 
 
 def get_article_title_matches(subject, threshold=75, scorer=fuzz.WRatio):

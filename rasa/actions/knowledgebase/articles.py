@@ -1,11 +1,6 @@
-import os
 import json
 
-from dotenv import load_dotenv
-load_dotenv()
-
-home = os.getenv("PROJ_HOME")
-articles_filepath = os.path.join(home, "data/chatbot_knowledgebase/subject_matter/article_data.json")
+articles_filepath = "/app/knowledgebase/data/subject_matter/article_data.json"
 
 with open(articles_filepath, "r") as f:
     articles = json.load(f)
