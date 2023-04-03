@@ -1,4 +1,5 @@
-FROM khalosa/rasa-aarch64:3.3.1
+#FROM khalosa/rasa-aarch64:3.3.1
+FROM rasa/rasa:3.3.1
 
 WORKDIR /app
 COPY . /app

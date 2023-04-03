@@ -5,7 +5,7 @@ services:
     container_name: "nlu_server"
     build:
       context: backend
-    platform: linux/arm64/v8
+#    platform: linux/arm64/v8
     volumes:
       - ./backend:/app
       - ./backend/data:/app/data
@@ -17,7 +17,6 @@ services:
     container_name: "action_server"
     build:
       context: actions
-    platform: linux/arm64/v8
     volumes:
       - ./actions:/app
       - ./actions/knowledgebase:/app/knowledgebase
