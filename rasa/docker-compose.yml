@@ -24,15 +24,15 @@ services:
     expose:
       - 5055
 
-  nginx:
-    container_name: "nginx"
-    image: nginx
-    depends_on:
-      - nlu_server
-      - action_server
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ./certs:/etc/letsencrypt/live/explorer-ai.chat
+#  nginx:
+#    container_name: "nginx"
+#    image: nginx
+#    depends_on:
+#      - nlu_server
+#      - action_server
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    volumes:
+#      - ./nginx:/etc/nginx/conf.d
+#      - ./certs:/etc/letsencrypt/live/explorer-ai.chat
