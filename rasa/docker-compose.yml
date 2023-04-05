@@ -35,4 +35,4 @@ services:
       - "443:443"
     volumes:
       - ./nginx:/etc/nginx/conf.d
-      - /etc/letsencrypt/live/explorer-ai.chat:/etc/letsencrypt/live/explorer-ai.chat
+      - ../../etc/letsencrypt/live/explorer-ai.chat:/etc/letsencrypt/live/explorer-ai.chat
