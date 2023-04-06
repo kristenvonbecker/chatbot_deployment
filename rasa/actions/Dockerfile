@@ -2,16 +2,12 @@ FROM rasa/rasa-sdk:3.3.0
 
 WORKDIR /app
 
+COPY ./requirements-actions.txt requirements.txt
 COPY . /app
-COPY ./knowledgebase /app/knowledgebase
 
 USER root
 
-COPY requirements-actions.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
-
-VOLUME /app
-VOLUME /app/knowledgebase
 
 EXPOSE 5055
 
