@@ -33,7 +33,7 @@ services:
       - action_server
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ../../etc/letsencrypt/live/explorer-ai.chat:/etc/letsencrypt/live/explorer-ai.chat
+      - /etc/letsencrypt/live/explorer-ai.chat:/etc/letsencrypt/live/explorer-ai.chat
     ports:
       - "80:80"
       - "443:443"
