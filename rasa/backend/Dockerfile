@@ -8,6 +8,6 @@ COPY ./data /app/data
 COPY ./models /app/models
 COPY . /app
 
-RUN rasa train --force --out /app/models
+RUN rasa train nlu -c /app/config.yml --data /app/data --domain /app/domain --out /app/models
 
 ENTRYPOINT ["rasa", "run", "-m", "/app/models", "--enable-api", "--cors", "*", "--debug"]
