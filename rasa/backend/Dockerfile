@@ -4,10 +4,10 @@ WORKDIR /app
 
 USER root
 
-COPY ./data /app/data
 COPY ./models /app/models
+COPY ./data /app/data
 COPY . /app
 
-RUN rasa train nlu -c /app/config.yml --data /app/data --domain /app/domain --out /app/models
+RUN rasa train
 
-ENTRYPOINT ["rasa", "run", "-m", "/app/models", "--enable-api", "--cors", "*", "--debug"]
+ENTRYPOINT ["rasa", "run", "-m", "models", "--enable-api", "--cors", "*", "--debug"]
