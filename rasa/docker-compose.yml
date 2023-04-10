@@ -35,7 +35,7 @@ services:
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - /etc/letsencrypt:/cert
-      - ./nginx/webchat:/usr/share/nginx/html
+      - ./nginx/web-content:/usr/share/nginx/html
     ports:
       - "81:80"
       - "444:443"
