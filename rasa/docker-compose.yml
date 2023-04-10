@@ -36,6 +36,7 @@ services:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
       - /etc/letsencrypt:/cert
       - ./nginx/web-content:/usr/share/nginx/html
+      - /etc/nginx/proxy_params:/etc/nginx/proxy_params
     ports:
       - "81:80"
       - "444:443"
