@@ -1,15 +1,11 @@
 version: '3'
 services:
 
-  nlu_server:
-    container_name: "nlu_server"
+  rasa_server:
+    container_name: "rasa_server"
     build:
       context: backend
     user: root
-#    volumes:
-#      - ./backend:/app
-#      - ./backend/data:/app/data
-#      - ./backend/models:/app/models
     ports:
       - "5005:5005"
 
@@ -17,26 +13,22 @@ services:
     container_name: "action_server"
     build:
       context: actions
-#    volumes:
-#      - ./actions:/app
-#      - ./actions/knowledgebase:/app/knowledgebase
     ports:
       - "5055:5055"
     expose:
       - 5055
 
-  nginx:
+  web_server:
     container_name: "web_server"
-    build:
-      context: nginx
+    image: nginx
     depends_on:
-      - nlu_server
-      - action_server
+      - "rasa_server"
+      - "action_server"
     volumes:
-      - ./nginx/my_nginx.conf:/etc/nginx/conf.d/my_nginx.conf
-      - /etc/letsencrypt:/cert
-      - ./nginx/web-content:/usr/share/nginx/html
-      - /etc/nginx/proxy_params:/etc/nginx/proxy_params
+      - ./web/public:/var/www/explorer-ai.chat/public
+      - /etc/nginx:/etc/nginx
+      - ./web/default.conf:/etc/nginx/sites-available/explorer-ai.chat.conf
+      - /etc/letsencrypt:/etc/letsencrypt
     ports:
-      - "81:80"
-      - "444:443"
+      - "80:80"
+      - "443:443"
