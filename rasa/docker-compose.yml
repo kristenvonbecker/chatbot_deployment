@@ -25,9 +25,8 @@ services:
       - "rasa_server"
       - "action_server"
     volumes:
-      - ./web/public:/var/www/explorer-ai.chat/public
-      - /etc/nginx:/etc/nginx
-      - ./web/default.conf:/etc/nginx/sites-available/explorer-ai.chat.conf
+      - ./web/html:/var/www/explorer-ai.chat/html
+      - ./web/default.conf:/etc/nginx/sites-available/explorer-ai.chat
       - /etc/letsencrypt:/etc/letsencrypt
     ports:
       - "80:80"
