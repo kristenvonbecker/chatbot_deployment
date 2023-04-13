@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if ! [ -x "$(command -v docker compose)" ]; then
-  echo 'Error: docker compose is not installed.' >&2
+if ! [ -x "$(docker compose version)" ]; then
+  echo 'Error: Docker Compose is not installed.' >&2
   exit 1
 fi
 
