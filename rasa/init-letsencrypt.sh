@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if ! [ -x "$(docker compose version)" ]; then
-  echo 'Error: Docker Compose is not installed.' >&2
-  exit 1
-fi
-
 domains=(explorer-ai.chat www.explorer-ai.chat)
 domain=explorer-ai.chat
 rsa_key_size=4096
