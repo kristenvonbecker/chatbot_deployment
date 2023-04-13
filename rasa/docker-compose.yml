@@ -2,7 +2,6 @@ version: '3'
 services:
 
   rasa_server:
-    container_name: "rasa_server"
     build:
       context: backend
     user: root
@@ -10,7 +9,6 @@ services:
       - "5005:5005"
 
   action_server:
-    container_name: "action_server"
     build:
       context: actions
     ports:
@@ -19,9 +17,7 @@ services:
       - 5055
 
   web_server:
-    container_name: "web_server"
-    build:
-      context: web
+    image: nginx
     depends_on:
       - "rasa_server"
       - "action_server"
@@ -29,7 +25,4 @@ services:
       - "81:80"
       - "444:443"
     volumes:
-#      - ./web/html:/var/www/explorer-ai.chat/html
-#      - ./web/default.conf:/etc/nginx/sites-enabled/explorer-ai.chat
-      - /etc/nginx/nginx.conf:/etc/nginx/nginx.conf
       - /etc/letsencrypt:/etc/letsencrypt

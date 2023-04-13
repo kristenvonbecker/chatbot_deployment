@@ -1,4 +1,5 @@
-FROM nginx
+FROM nginx:latest
 
-COPY ./html /var/www/explorer-ai.chat/html
-COPY ./default.conf /etc/nginx/sites-enabled/explorer-ai.chat
+COPY ./html /usr/share/nginx/html
+COPY ./explorer-ai.chat.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
