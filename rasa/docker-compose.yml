@@ -29,6 +29,6 @@ services:
       - "443:443"
     volumes:
       - ./web/html:/var/www/explorer-ai.chat/html
-      - ./web/default.conf /etc/nginx/sites-available/explorer-ai.chat
+      - ./web/default.conf:/etc/nginx/sites-available/explorer-ai.chat
       - /etc/nginx/nginx.conf:/etc/nginx/nginx.conf
       - /etc/letsencrypt:/etc/letsencrypt
