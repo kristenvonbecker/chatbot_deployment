@@ -25,8 +25,8 @@ services:
       - "rasa_server"
       - "action_server"
     ports:
-      - "80:80"
-      - "443:443"
+      - "81:80"
+      - "444:443"
     volumes:
       - ./web/html:/var/www/explorer-ai.chat/html
       - ./web/default.conf:/etc/nginx/sites-available/explorer-ai.chat
