@@ -20,7 +20,8 @@ services:
 
   web_server:
     container_name: "web_server"
-    image: nginx
+    build:
+      context: web
     depends_on:
       - "rasa_server"
       - "action_server"
