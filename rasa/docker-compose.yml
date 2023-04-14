@@ -25,8 +25,8 @@ services:
       - "rasa_server"
       - "action_server"
     ports:
-      - "80:80"
-      - "443:443"
+      - "127.0.0.1:80:80"
+      - "127.0.0.1:443:443"
     restart: always
     volumes:
       - ./web/html:/usr/share/nginx/html:ro
