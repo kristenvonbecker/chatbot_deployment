@@ -1,2 +1,7 @@
 #!/bin/sh
--c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'
+trap exit TERM
+while true
+do
+  certbot renew
+  sleep 12h & wait
+done
