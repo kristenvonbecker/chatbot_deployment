@@ -34,7 +34,8 @@ services:
       - ./web/conf/explorer-ai.chat.conf:/etc/nginx/conf.d/explorer-ai.chat.conf:ro
       - ./certbot/www:/var/www/certbot:ro
       - ./certbot/conf:/etc/letsencrypt:ro
-    command: ./web/start.sh
+      - ./web/start.sh:/start.sh
+    command: /start.sh
 
   certbot:
     container_name: "certbot"
@@ -42,4 +43,5 @@ services:
     volumes:
       - ./certbot/www:/var/www/certbot:rw
       - ./certbot/conf:/etc/letsencrypt:rw
-    entrypoint: ./certbot/entrypoint.sh
+      - ./certbot/entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
