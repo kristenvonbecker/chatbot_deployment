@@ -1,4 +1,5 @@
 #!/bin/sh
+
 trap exit TERM
 while true
 do
