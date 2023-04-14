@@ -26,7 +26,7 @@ services:
       - "action_server"
     ports:
       - "80:80"
-      - "444:443"
+      - "443:443"
     restart: always
     volumes:
       - ./web/html:/usr/share/nginx/html:ro
