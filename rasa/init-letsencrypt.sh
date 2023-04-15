@@ -5,7 +5,7 @@ domain=explorer-ai.chat
 rsa_key_size=4096
 data_path="./certbot"
 email="kristenvonbecker@gmail.com"
-staging=1 # 1 if testing setup (to avoid hitting request limits), else 0
+staging=0 # 1 if testing setup (to avoid hitting request limits), else 0
 
 if [ -d "$data_path" ]; then
   read -p "Existing data found for $domain. Continue and replace existing certificate? (y/N) " decision

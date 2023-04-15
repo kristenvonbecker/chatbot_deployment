@@ -8,6 +8,8 @@ services:
     user: root
     ports:
       - "5005:5005"
+    expose:
+      - 5005
 
   action_server:
     container_name: "action_server"
