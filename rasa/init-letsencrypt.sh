@@ -1,14 +1,13 @@
 #!/bin/bash
 
 domains=(explorer-ai.chat www.explorer-ai.chat)
-domain=explorer-ai.chat
 rsa_key_size=4096
 data_path="./certbot"
 email="kristenvonbecker@gmail.com"
 staging=0 # 1 if testing setup (to avoid hitting request limits), else 0
 
 if [ -d "$data_path" ]; then
-  read -p "Existing data found for $domain. Continue and replace existing certificate? (y/N) " decision
+  read -p "Existing data found for $domains. Continue and replace existing certificate? (y/N) " decision
   if [ "$decision" != "Y" ] && [ "$decision" != "y" ]; then
     exit
   fi
@@ -23,9 +22,9 @@ if [ ! -e "$data_path/conf/options-ssl-nginx.conf" ] || [ ! -e "$data_path/conf/
   echo
 fi
 
-echo "### Creating dummy certificate for $domain ..."
-path="/etc/letsencrypt/live/$domain"
-mkdir -p "$data_path/conf/live/$domain"
+echo "### Creating dummy certificate for $domains ..."
+path="/etc/letsencrypt/live/$domains"
+mkdir -p "$data_path/conf/live/$domains"
 docker compose run --rm --entrypoint "\
   openssl req -x509 -nodes -newkey rsa:$rsa_key_size -days 1\
     -keyout '$path/privkey.pem' \
@@ -40,17 +39,17 @@ echo
 
 echo "### Deleting dummy certificate for $domains ..."
 docker compose run --rm --entrypoint "\
-  rm -Rf /etc/letsencrypt/live/$domain && \
-  rm -Rf /etc/letsencrypt/archive/$domain && \
-  rm -Rf /etc/letsencrypt/renewal/$domain.conf" certbot
+  rm -Rf /etc/letsencrypt/live/$domains && \
+  rm -Rf /etc/letsencrypt/archive/$domains && \
+  rm -Rf /etc/letsencrypt/renewal/$domains.conf" certbot
 echo
 
 
-echo "### Requesting Let's Encrypt certificate for $domain ..."
+echo "### Requesting Let's Encrypt certificate for $domains ..."
 #Join $domains to -d args
 domain_args=""
-for D in "${domains[@]}"; do
-  domain_args="$domain_args -d $D"
+for domain in "${domains[@]}"; do
+  domain_args="$domain_args -d $domain"
 done
 
 # Select appropriate email arg
