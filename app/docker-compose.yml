@@ -36,8 +36,10 @@ services:
       - ./web/conf/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./web/html/index.html:/var/www/html/index.html:ro
       - ./web/html/favicon.ico:/var/www/html/favicon.ico:ro
-      - /var/www/html:/var/www/certbot:ro   # does this work?
-      - ./certbot/conf:/etc/letsencrypt:ro
+      - /var/www/.well-known:/var/www/.well-known:rw
+      - ./certbot/conf/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf:ro
+      - ./certbot/conf/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
       - ./web/start.sh:/start.sh
     command: /start.sh
 
@@ -45,7 +47,9 @@ services:
     container_name: "certbot"
     image: certbot/certbot
     volumes:
-      - /var/www/certbot:/var/www/certbot:rw
-      - ./certbot/conf:/etc/letsencrypt:rw
+      - /var/www/.well-known:/var/www/.well-known:rw
+      - ./certbot/conf/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf:rw
+      - ./certbot/conf/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem:rw
+      - /etc/letsencrypt:/etc/letsencrypt:rw
       - ./certbot/entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
