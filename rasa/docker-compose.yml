@@ -34,8 +34,8 @@ services:
       - ./web/conf/default.conf:/etc/nginx/conf.d/default.conf:ro
       - ./web/conf/explorer-ai.chat.conf:/etc/nginx/conf.d/explorer-ai.chat.conf:ro
       - ./web/conf/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./web/html:/usr/share/nginx/html/site-content:ro
-      - ./certbot/www:/usr/share/nginx/html/certbot:ro
+      - ./web/html:/var/www/html:ro
+      - /var/www/certbot:/var/www/certbot:ro   # does this work?
       - ./certbot/conf:/etc/letsencrypt:ro
       - ./web/start.sh:/start.sh
     command: /start.sh
@@ -44,7 +44,7 @@ services:
     container_name: "certbot"
     image: certbot/certbot
     volumes:
-      - ./certbot/www:/usr/share/nginx/html/certbot:rw
+      - /var/www/certbot:/var/www/certbot:rw
       - ./certbot/conf:/etc/letsencrypt:rw
       - ./certbot/entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
