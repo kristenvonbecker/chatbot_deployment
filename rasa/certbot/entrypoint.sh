@@ -3,6 +3,6 @@
 trap exit TERM
 while true
 do
-  sleep 12h & wait
   certbot renew
+  sleep 12h & wait
 done
