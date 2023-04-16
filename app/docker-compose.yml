@@ -42,7 +42,7 @@ services:
 #      - ./certbot/conf/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf
 #      - ./certbot/conf/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem
       - ./certbot/conf:/etc/letsencrypt
-      - /etc/letsencrypt:/etc/letsencrypt
+#      - /etc/letsencrypt:/etc/letsencrypt
       - ./web/start.sh:/start.sh
     command: /start.sh
 
