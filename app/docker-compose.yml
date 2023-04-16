@@ -31,15 +31,15 @@ services:
       - "443:443"
     restart: always  # is this needed?
     volumes:
-      - ./web/conf/default.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./web/conf/explorer-ai.chat.conf:/etc/nginx/conf.d/explorer-ai.chat.conf:ro
-      - ./web/conf/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./web/html/index.html:/var/www/html/index.html:ro
-      - ./web/html/favicon.ico:/var/www/html/favicon.ico:ro
-      - /var/www/.well-known:/var/www/.well-known:rw
-      - ./certbot/conf/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf:ro
-      - ./certbot/conf/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem:ro
-      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - ./web/conf/default.conf:/etc/nginx/conf.d/default.conf
+      - ./web/conf/explorer-ai.chat.conf:/etc/nginx/conf.d/explorer-ai.chat.conf
+      - ./web/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./web/html/index.html:/var/www/html/index.html
+      - ./web/html/favicon.ico:/var/www/html/favicon.ico
+      - /var/www/.well-known:/var/www/.well-known
+      - ./certbot/conf/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf
+      - ./certbot/conf/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem
+      - /etc/letsencrypt:/etc/letsencrypt
       - ./web/start.sh:/start.sh
     command: /start.sh
 
@@ -47,9 +47,9 @@ services:
     container_name: "certbot"
     image: certbot/certbot
     volumes:
-      - /var/www/.well-known:/var/www/.well-known:rw
-      - ./certbot/conf/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf:rw
-      - ./certbot/conf/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem:rw
-      - /etc/letsencrypt:/etc/letsencrypt:rw
+      - /var/www/.well-known:/var/www/.well-known
+      - ./certbot/conf/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf
+      - ./certbot/conf/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem
+      - /etc/letsencrypt:/etc/letsencrypt
       - ./certbot/entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
