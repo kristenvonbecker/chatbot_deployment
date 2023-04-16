@@ -54,7 +54,7 @@ services:
       - ./certbot/conf:/etc/letsencrypt:rw
 #      - ./certbot/conf/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf
 #      - ./certbot/conf/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem
-      - ./certbot/www:/var/www:rw
+      - ./certbot/www:/var/www/html:rw
 #      - /etc/letsencrypt:/etc/letsencrypt
       - ./certbot/entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
