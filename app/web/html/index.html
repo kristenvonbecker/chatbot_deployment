@@ -181,7 +181,7 @@
     </script>
     <script>
         // Connect to RASA server
-        const socket = io("https://localhost:5005");
+        const socket = io("https://explorer-ai.chat");
 
         const messages = document.getElementById('messages');
         const form = document.getElementById('form');
@@ -199,13 +199,6 @@
             messages.appendChild(item);
             scrollToBottom();
         }
-
-        const welcome = "Hello! I'm Explorer AI, a virtual assistant for visitors to the Exploratorium in " +
-                  "San Francisco. I've been trained to answer questions about the Exploratorium's exhibits and the " +
-                  "concepts they illustrate.";
-        const how_help = "How may I assist you?";
-        appendMessage(welcome, "received");
-        appendMessage(how_help, "received");
 
         function appendImage(src, type) {
             const item = document.createElement('div');
@@ -237,6 +230,15 @@
             messages.appendChild(quickRepliesNode);
             scrollToBottom();
         }
+
+        const welcome = "Hello! I'm Explorer AI, a virtual assistant for visitors to the Exploratorium in " +
+                  "San Francisco. I've been trained to answer questions about the Exploratorium's exhibits and the " +
+                  "concepts they illustrate.";
+        const how_help = "How may I assist you?";
+        appendMessage(welcome, "received");
+        appendMessage(how_help, "received");
+
+
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
